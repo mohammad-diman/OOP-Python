@@ -3,16 +3,12 @@ class Pemain:
         self.nama = nama
         self.umur = umur
         self.tinggi_badan = tinggi_badan
-        self.poin = 0
+
 
     def cetak_info(self):
         print(f"Nama: {self.nama}")
         print(f"Umur: {self.umur} tahun")
         print(f"Tinggi Badan: {self.tinggi_badan} cm")
-        print(f"Total Poin: {self.poin} poin")
-
-    def tambah_poin(self, poin):
-        self.poin += poin
 
 
 class Pelatih:
@@ -56,7 +52,7 @@ pelatih = Pelatih("Taufik Hidayat", "Meraih medali emas dalam nomor tunggal putr
 pemain1 = Pemain("Anjani", 20, 170)
 pemain2 = Pemain("Diman", 22, 175)
 
-# Membuat objek klub bulu tangkis
+# Membuat objek klub badminton
 club = ClubBadminton("Club Badminton Centi")
 
 # Menambahkan pemain dan pelatih ke klub
@@ -69,10 +65,47 @@ club.tambah_pemain(pemain2)
 club.tampilkan_daftar_pelatih()
 club.tampilkan_daftar_pemain()
 
-# Menambahkan poin untuk pemain
-pemain1.tambah_poin(10)
-pemain2.tambah_poin(5)
+tambah_pemain = input("ingin menambahkan pemain?(ya/tidak): ")
 
-# Menampilkan informasi pemain setelah penambahan poin
-print("\nSetelah penambahan poin:")
-club.tampilkan_daftar_pemain()
+if tambah_pemain.lower() == "ya":
+    nama = input("Masukkan nama pemain: ")
+    umur = int(input("Masukkan umur pemain: "))
+    tinggi_badan = int(input("Masukkan tinggi pemain (dalam cm): "))
+
+    pemain_baru = Pemain(nama, umur, tinggi_badan)
+
+    club.tambah_pemain(pemain_baru)
+    print(f"{nama} telah di tambahkan ke dalam club")
+
+else:
+    print("terima kasih!")
+
+kick_pemain = input("ingin mengeluarkan pemain?(ya/tidak): ")
+
+if kick_pemain.lower() == "ya":
+    club.tampilkan_daftar_pemain()
+
+    kick_nama = input("Masukkan nama pemain yang akan di keluarkan: ")
+
+    for pemain in club.daftar_pemain:
+        if pemain.nama == kick_pemain:
+            club.daftar_pemain.remove()
+            print(f"{kick_nama} telah di keluarkan dari club.")
+            break
+    else:
+        print(f"{kick_nama}telah keluar dari club")
+
+
+lihat_daftar = input("lihat daftar pemain? (ya/tidak): ")
+
+if lihat_daftar.lower() == "ya":
+    club.tampilkan_daftar_pemain()
+
+lihat_daftar = input("lihat daftar pelatih? (ya/tidak): ")
+
+if lihat_daftar.lower() == "ya":
+    club.tampilkan_daftar_pelatih()
+
+else:
+    print("Terima Kasih")
+    
