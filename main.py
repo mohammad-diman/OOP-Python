@@ -65,9 +65,9 @@ club.tambah_pemain(pemain2)
 club.tampilkan_daftar_pelatih()
 club.tampilkan_daftar_pemain()
 
-tambah_pemain = input("ingin menambahkan pemain?(ya/tidak): ")
+tambah_pemain = input("ingin menambahkan pemain?(y/n): ")
 
-if tambah_pemain.lower() == "ya":
+if tambah_pemain.lower() == "y":
     nama = input("Masukkan nama pemain: ")
     umur = int(input("Masukkan umur pemain: "))
     tinggi_badan = int(input("Masukkan tinggi pemain (dalam cm): "))
@@ -77,12 +77,10 @@ if tambah_pemain.lower() == "ya":
     club.tambah_pemain(pemain_baru)
     print(f"{nama} telah di tambahkan ke dalam club")
 
-else:
-    print("terima kasih!")
 
-kick_pemain = input("ingin mengeluarkan pemain?(ya/tidak): ")
+kick_pemain = input("ingin mengeluarkan pemain?(y/n): ")
 
-if kick_pemain.lower() == "ya":
+if kick_pemain.lower() == "y":
     club.tampilkan_daftar_pemain()
 
     kick_nama = input("Masukkan nama pemain yang akan di keluarkan: ")
@@ -96,14 +94,14 @@ if kick_pemain.lower() == "ya":
         print(f"{kick_nama}telah keluar dari club")
 
 
-lihat_daftar = input("lihat daftar pemain? (ya/tidak): ")
+lihat_daftar = input("lihat daftar pemain? (y/n): ")
 
-if lihat_daftar.lower() == "ya":
+if lihat_daftar.lower() == "y":
     club.tampilkan_daftar_pemain()
 
-lihat_daftar = input("lihat daftar pelatih? (ya/tidak): ")
+lihat_daftar = input("lihat daftar pelatih? (y/n): ")
 
-if lihat_daftar.lower() == "ya":
+if lihat_daftar.lower() == "y":
     club.tampilkan_daftar_pelatih()
 
 else:
