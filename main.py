@@ -44,13 +44,31 @@ class ClubBadminton:
             pemain.cetak_info()
             print("-" * 20)
 
+    def simpan_data(self, nama_data):
+        with open(nama_data, 'w') as file:
+            for pemain in self.daftar_pemain:
+                file.write(f"{pemain.nama},{pemain.umur},{pemain.tinggi_badan}/n")
+
+    def baca_dari_data(self, nama_data):
+        self.daftar_pemain = []
+        try:
+            with open(nama_data, 'r'):
+                for line in file:
+                    data = line.strip().split(',')
+                    if len(data) == 4:
+                        nama, umur, tinggi_badan, poin = data
+                        pemain = Pemain(nama, int(umur), int(tinggi_badan))
+                        pemain.poin = int(poin)
+                        self.daftar_pemain.append(pemain)
+        except FileNotFoundError:
+            pass
+
 
 #Membuat objek Pelatih
 pelatih = Pelatih("Taufik Hidayat", "Meraih medali emas dalam nomor tunggal putra di Olimpiade Athens 2004. Juara di All England Championships, salah satu turnamen bulu tangkis tertua dan paling bergengsi di dunia. Meraih prestasi di Kejuaraan Dunia bulu tangkis, meskipun mungkin tidak memenangkan gelar tunggal dunia. Meraih banyak gelar nasional dan prestasi dalam berbagai turnamen nasional Indonesia.")            
 
 # Membuat objek pemain
 pemain1 = Pemain("Anjani", 20, 170)
-pemain2 = Pemain("Diman", 22, 175)
 
 # Membuat objek klub badminton
 club = ClubBadminton("Club Badminton Centi")
@@ -58,7 +76,6 @@ club = ClubBadminton("Club Badminton Centi")
 # Menambahkan pemain dan pelatih ke klub
 club.tambah_pelatih(pelatih)
 club.tambah_pemain(pemain1)
-club.tambah_pemain(pemain2)
 
 
 # Menampilkan daftar pemain dan pelatih di klub
@@ -91,7 +108,7 @@ if kick_pemain.lower() == "y":
             print(f"{kick_nama} telah di keluarkan dari club.")
             break
     else:
-        print(f"{kick_nama}telah keluar dari club")
+        print(f"{kick_nama} telah keluar dari club")
 
 
 lihat_daftar = input("lihat daftar pemain? (y/n): ")
@@ -106,4 +123,3 @@ if lihat_daftar.lower() == "y":
 
 else:
     print("Terima Kasih")
-    
